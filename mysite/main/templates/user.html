@@ -1,0 +1,25 @@
+<script language="JavaScript"> 
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+<table >
+          
+          	{%for i in users%}
+	
+            <tr >
+            	<td onclick = " f('/profile/')">
+             <p>{{i}}</p>
+             </td><td>
+             <img src="http://192.168.0.144/media/{{i.avatar}}" width="5%" height="5%"/>
+         </td>
+            </tr>
+           {%endfor%}
+          <tr >
+          	<td onclick = " f('/new_user/')">
+          	Новый пользователь
+          	</td>
+          </tr>
+          
+</table> 

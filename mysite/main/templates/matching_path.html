@@ -1,0 +1,78 @@
+
+<p>{{matching.titel}}</p>
+<p>Создатель: {{matching.id_creator}}</p>
+<p>Дата создания: {{matching.date}}</p>
+<p>Дата окончания: {{matching.date_end}}</p>
+<p>Статус: {% if matching.status = 1}
+					Создание
+				{% elif matching.status = 2%}
+					Согласование
+				{% elif matching.status = 3%}
+					Подписание	</p>
+
+
+<table>
+	{%for i in user %}
+		{%if i.number = 1%}
+		<tr>		
+			<td>
+			 Исполнитель {{i.user}}
+			</td>
+			{%if i.status = 2%}
+			<td> Доработка</td>
+			{%endif%}
+			
+		<tr>		
+			<td>
+				Согласующие:
+			</td>
+
+		</tr>
+		
+
+		{%else%}
+
+		<tr>
+			<td>
+			  {{i.number - 1}}
+			</td>
+			<td>
+			  {{i.user}}
+			</td>
+			{%if i.status = 2%}
+			<td> Работает</td>
+			{%elif i.status = 2%}
+			<td> Согласовал</td>
+			{%endif%}
+		<tr>		
+		{%endif%}
+	{%endfor%}
+	<tr>
+		
+		<td>
+		 Подписант {{matching.id_signatory}}
+		</td>
+		{%if matching.status = 3%}
+			<td> Подписание</td>
+			{%endif%}
+	<tr>		
+
+</table>
+
+
+<table title="Документы">
+	<tr></tr>
+	{%for i in document%}
+	<tr>
+
+		<td>
+			<a href="http://192.168.0.144/media/{{i.document.file}}">{{i.document.titel}}</a>
+		</td>
+	</tr>
+	{%endfor%}
+</table>
+<p></p>
+<p></p>
+<p></p>
+
+ <button form = "matching" formaction="/matching_all/">Назад</button>

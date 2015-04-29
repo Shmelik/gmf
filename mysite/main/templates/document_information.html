@@ -1,0 +1,93 @@
+
+<style>
+   
+
+   td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+  </style>
+
+<script language="JavaScript"> 
+
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+
+<table >
+    
+ 
+    
+       
+       
+   
+
+      <tr>
+        <td style = "text-align: left;">
+          Название 
+        </td>
+        <td>
+          Версия
+        </td>
+        <td style = "text-align: left;">
+          Дата изменения
+        </td>
+         {%if  document.update%}
+        <td>
+          Кто загрузил
+        </td>
+        {%endif%}
+        <td>
+          Владелец файла
+        </td>
+        
+         </tr>
+       
+      
+          <tr>
+            <td style = "text-align: left;">
+              <a href="http://192.168.0.144/media/{{document.file}}">{{document.titel}}</a>
+            </td>
+            <td>
+              {{document.versia}}
+            </td>
+            <td style = "text-align: left;">
+              {{document.date}}
+            </td>
+
+            {%if  document.update%}
+              <td>{{document.update}}</td>
+            {%endif%}
+
+            <td >
+                {{document.user_id}}
+            </td>
+            
+            
+            {%if user_flag == 1 and document.versia_final %}
+            <td onclick = "f('/document_delete/{{document.id}}')">
+              <img src="http://192.168.0.144/media/delete.png" width="10" height="10"/>
+            </td>
+            {%endif%}
+
+          </tr>
+
+        <tr>
+
+
+        </tr>
+
+</table> 
+{%if user_flag == 1 or user_flag == 2 %}
+<button onclick = "f('/document_access/{{document.id}}')">Доступ</button>
+{%endif%}
+{%if user_flag == 1%}
+<button onclick = "f('/new_versia/{{document.id}}')">Загрузить новую версию</button>
+{%endif%}
+<button onclick = "f('/versia_document/{{document.id}}')">Версии</button>
+
+ <p></p>
+
+ <button onclick = "f('/document/')">Назадл</button>
+ <button onclick = "f('/')"> Главная страница</button>

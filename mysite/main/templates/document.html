@@ -1,0 +1,112 @@
+
+<style>
+   
+
+   td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+  </style>
+
+<script language="JavaScript"> 
+
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+ <button onclick = "f('/new_document/')">Новый файл</button>
+ <button onclick = "f('/')"> Главная страница</button>
+
+<table >
+    
+ 
+    
+       
+       
+   
+ 
+      
+      <tr>
+        <td style = "text-align: left;">
+          Документ
+        </td>
+        <td style = "text-align: left;">
+          Владелиц
+        </td>
+        <td>
+          Дата загрузки
+        </td>
+       
+         </tr>
+         <tr><td>_________________________________</td></tr>
+       {%if document%}
+
+        {%for i in document%}
+          <tr>
+            <td style = "text-align: left;">
+              <a href="http://192.168.0.144/document_information/{{i.id}}">{{i.titel}}</a>
+            </td>
+            <td style = "text-align: left;">
+                {{i.user_id}}
+            </td>
+
+            <td style = "text-align: left;">
+              {{i.date}}
+            </td>
+           
+            {%if  i.update%}
+              <td>{{i.update}}</td>
+            {%endif%}
+          </tr>
+        {%endfor%}
+        {%endif%}
+         <tr><td>_________________________________</td></tr>
+        {%if document_user%}
+        
+        {%for i in document_user%}
+          <tr>
+            <td style = "text-align: left;">
+              <a href="http://192.168.0.144/document_information/{{i.document.id}}">{{i.document.titel}}</a>
+            </td>
+            <td style = "text-align: left;">
+                {{i.document.user_id}}
+            </td>
+
+            <td style = "text-align: left;">
+              {{i.document.date}}
+            </td>
+            
+            {%if i.document.update%}
+              <td>{{i.document.update}}</td>
+            {%endif%}
+          </tr>
+        {%endfor%}
+        {%endif%}
+         <tr><td>_________________________________</td></tr>
+         {{document_function}}
+        {%if document_function%}
+        
+        {%for i in document_function%}
+          <tr>
+            <td style = "text-align: left;">
+              <a href="http://192.168.0.144/document_information/{{i.id}}">{{i.document.titel}}</a>
+            </td>
+            <td style = "text-align: left;">
+                {{i.document.user_id}}
+            </td>
+
+            <td style = "text-align: left;">
+              {{i.document.date}}
+            </td>
+            
+            {%if i.document.update%}
+              <td>{{i.document.update}}</td>
+            {%endif%}
+          </tr>
+        {%endfor%}
+        <tr></tr>
+      
+      {%endif%}
+  
+
+</table> 

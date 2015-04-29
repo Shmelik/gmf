@@ -1,0 +1,79 @@
+<style>
+  
+
+  
+   table {
+    border: 1px solid black;
+    padding: 0 10px;
+    height: 100px;
+    width: 300px;
+   }
+  
+
+    </style>
+<script language="JavaScript"> 
+
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+
+
+<form id = "matching"  class="rightstr" method = "post" >
+{% csrf_token %}
+	<p>Название	{{form_matching.titel}}</p>
+	<p>Дата окончания	{{form_matching.date}}
+		
+	</p>
+	<p>Исполнитель	{{form_matching.user_performer}}</p>
+	<p>Описание	{{form_matching.specification}}</p>
+	<p>Подписант	{{form_matching.user_signatory}}</p>
+	<p></p>
+	<p></p>
+	<p></p>
+
+	{{form_matching_user.user}}
+	<button formaction="/matching_user_save/{{matching.id}}/">Добавить</button>
+	<table title="Согласующие">
+
+	<tr></tr>
+	{%for i in users%}
+	{%if i.number != 1%}
+	<tr>
+
+		<td>
+			{{i.user}}
+		</td>
+		<td>
+			<input  type="image" src="http://192.168.0.144/media/delete.png" width="10" height="10" formaction="/matching_user_delete/{{matching.id}}/{{i.user.login}}/">
+		</td>
+	</tr>
+	{%endif%}
+	{%endfor%}
+</table>
+</form>
+
+
+	
+<p></p>
+<button form = "matching" formaction="/matching_document/{{matching.id}}/">Добавить файл</button>
+<table title="Документы">
+	<tr></tr>
+	{%for i in document%}
+	<tr>
+
+		<td>
+			{{i.document.titel}}
+		</td>
+		<td>
+			<input form = "matching" type="image" src="http://192.168.0.144/media/delete.png" width="10" height="10" formaction="/matching_document_delete/{{matching.id}}/{{i.document.id}}/">
+		</td>
+	</tr>
+	{%endfor%}
+</table>
+<p></p>
+<p></p>
+<p></p>
+ <button form = "matching" formaction="/matching_start/{{matching.id}}/">Запуск</button>
+ <button form = "matching" formaction="/matching_not/{{matching.id}}/">Отмена</button>

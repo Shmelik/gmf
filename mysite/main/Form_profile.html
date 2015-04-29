@@ -1,0 +1,15 @@
+enctype="multipart/form-data"	
+<form action = "/user_save/" class="rightstr" method = "post">
+	{% csrf_token %}
+	<p> Login 			: {{form.login}}		</p>
+	<p> Должность 		: {{form.id_function}}	</p>
+	<p> Имя 			: {{form.first_name}}	</p>
+	<p> Фамилия	 		: {{form.second_name}}	</p>
+	<p>	Отчество  	: {{form.patronymic}}		</p>
+	<p> e_mail  	: {{form.email}} 			</p>
+	<p>	Фото 		: {{form.avatar}}  {{ form.avatar_file }}		</p>
+	<p>Телефон внутриний : {{form.phone_work}}	</p>
+	<p>Телефон мобильный : {{form.phone_mob}}	</p>
+
+	<label style = "border: 2px solid black; padding: 3px;">Добавить<input type = "submit"   style = "display: none;"/></label></p>
+ </form>

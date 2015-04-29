@@ -1,0 +1,64 @@
+<style>
+   
+
+   td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+  </style>
+
+<script language="JavaScript"> 
+
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+ <button onclick = "f('/document_information/{{id}}')">Назад</button>
+ <button onclick = "f('/document')"> Документы</button>
+{{documents}}
+<table >
+    
+      <tr>
+        <td style = "text-align: left;">
+          Документ
+        </td>
+        <td style = "text-align: left;">
+          Владелиц
+        </td>
+        <td>
+          Дата загрузки
+        </td>
+
+        <td>Версия</td>
+        <td> Редактировал</td>
+       
+         </tr>
+         <tr><td>_________________________________</td></tr>
+      
+
+        {%for i in document%}
+          <tr>
+            <td style = "text-align: left;">
+              <a href="http://192.168.0.144/document_information/{{i.id}}">{{i.titel}}</a>
+            </td>
+            <td style = "text-align: left;">
+                {{i.user_id}}
+
+            </td>
+
+            <td style = "text-align: left;">
+              {{i.date}}
+            </td>
+           <td>
+              {{i.versia}}
+            </td>
+            {%if  i.update%}
+              <td>{{i.update}}</td>
+            {%endif%}
+          </tr>
+        {%endfor%}
+        
+      
+  
+
+</table> 

@@ -1,0 +1,72 @@
+<style>
+  
+
+   .block2 { 
+    width: 300px;  
+    border: solid 1px black; 
+   }
+
+  
+   table {
+    border: 1px solid black;
+    padding: 0 10px;
+    height: 100px;
+    width: 300px;
+   }
+  
+
+    </style>
+<script language="JavaScript"> 
+
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+
+
+
+	<p>{{matchin.titel}}   </p>
+	<p>Дата окончания:	{{matching.date}}</p>
+	<p>Исполнитель:	{{performer}}</p>
+	<p>Описание:	<div class="block2">{{matching.specification}}</div></p>
+	<p>Подписант:	{{matching.id_signatory}}</p>
+	<p></p>
+	<p></p>
+	<p></p>
+
+	
+	
+
+
+	
+<p></p>
+{%if user.number == 1%}
+<button onclick="f('/user_performer_document/{{matching.id}}/')">Добавить файл</button>
+{%endif%}
+<table title="Документы">
+	<tr></tr>
+	{%for i in document%}
+	<tr>
+
+		<td>
+			{{i.document.titel}}
+		</td>
+		{%if user.number == 1%}
+			
+		<td>
+			<input type="image" src="http://192.168.0.144/media/delete.png" width="10" height="10" onclick="f('/user_performer_document_delete/{{matching.id}}/{{i.document.id}}/')">
+		</td>
+		{%endif%}
+	</tr>
+	{%endfor%}
+</table>
+<p></p>
+<p></p>
+<p></p>
+{%if user.number == 1%}
+ <button onclick="f('/matching_runing_user/{{matching.id}}/')">Запуск</button>
+ {%else%}
+ <button onclick="f('/matching_next/{{matching.id}}/')">Согласование</button>
+  <button onclick="f('/matching_return/{{matching.id}}/')">Доработка</button>
+  {%endif%}

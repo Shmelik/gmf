@@ -1,0 +1,90 @@
+<script language="JavaScript"> 
+
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+
+
+<p>Гаруппа</p>
+<form action = "/access_group/{{id}}/" class="rightstr" method = "post" >
+	{% csrf_token %}
+{{form_group.group}}
+<p>Редактирование
+	{%if status == 1%}
+{{form_group.status_group}}</p>
+{%else%}
+<p>Только чтение
+</p>
+{%endif%}
+<button>Добавить</button>
+</form>
+
+
+
+<p>Пользователь</p>
+<form action = "/access_user/{{id}}/" class="rightstr" method = "post" >
+	{% csrf_token %}
+{{form_user.user}}
+{%if status == 1%}
+<p>Редактирование
+	{{form_user.status_user}}
+</p>
+{%else%}
+<p>Только чтение
+</p>
+{%endif%}
+
+<button>Добавить</button>
+</form>
+<p>Пользователи</p>
+			<table border ='1'>
+				{%for i in user%}
+				<tr>
+
+					<td>
+						{{i.user}}
+						
+					</td>
+					<td>{%if i.status == 2%}
+							Чтение
+						{%else%}
+						Редактирование
+						{%endif%}
+						</td>
+						{%if status == 1 and i.document.user_id != i.user and i.user.login != login%}
+					<td onclick = "f('/document_user_delete/{{i.id}}')">
+						
+              			<img src="http://192.168.0.144/media/delete.png" width="10" height="10" />
+           			</td>
+           			{%endif%}
+				</tr>
+				{%endfor%}
+			</table>
+<p>Группы</p>
+<table border ='1'>
+				{%for i in group%}
+				<tr>
+
+					<td>
+						{{i.group}}
+					</td>
+					<td>{%if i.statu == 2%}
+							Чтение
+						{%else%}
+						Редактирование
+						{%endif%}
+						</td>
+					{%if status == 1 and i.document.user_id != i.user%}
+					<td onclick = "f('/document_group_delete/{{i.id}}')">
+              			<img src="http://192.168.0.144/media/delete.png" width="10" height="10" />
+           			</td>
+           			{%endif%}
+				</tr>
+				{%endfor%}
+			</table>
+
+
+<button onclick = "f('/document_information/{{id}}')">Назад</button>
+ <button onclick = "f('/')"> Главная страница</button>

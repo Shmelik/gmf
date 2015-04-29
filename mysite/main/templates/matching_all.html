@@ -1,0 +1,60 @@
+
+
+{{matching}}
+<table>
+	<tr>
+		<td>
+			Название
+		</td>
+		<td>
+			Создатель
+		</td>
+		<td>
+			Исполнитель
+		</td>
+		<td>
+			Дата создания
+		</td>
+		<td>
+			Дата окончания
+		</td>
+		<td>
+			Статус
+		</td>
+	</tr>
+
+	{%for i in matching%}
+		<tr>
+			<td>
+				<a href="http://192.168.0.144/matching_runing/{{i.id}}">{{i.titel}}</a>
+				
+			</td>
+			<td>
+				{{i.id_creator}}
+			</td>
+			<td>
+				{% mass forloop.counter0 user %}
+				
+			</td>
+			<td>
+				{{i.date}}
+			</td>
+			<td>
+				{{i.date_end}}
+			</td>
+			<td>
+				{% if i.status = 1%}
+					Создание
+				{% elif i.status = 2%}
+					Согласование
+				{% elif i.status = 3%}
+					Подписание
+					{%endif%}
+			</td>
+		</tr>
+	{%endfor%}
+	
+	
+	
+
+</table>

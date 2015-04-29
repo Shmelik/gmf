@@ -1,0 +1,24 @@
+<script language="JavaScript"> 
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+<table >
+          
+          	{%for i in users%}
+	
+            <tr >
+            	<tdonclick = " f('/udate_user/{{i}}/')">
+             <p>{{i}}</p>
+             <img src="/media/{{i.avatar}}"/>
+         </td>
+            </tr>
+           {%endfor%}
+          <tr >
+          	<td onclick = " f('/new_user/')">
+          	Новый пользователь
+          	</td>
+          </tr>
+          
+</table> 

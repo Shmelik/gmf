@@ -1,0 +1,26 @@
+<script language="JavaScript"> 
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+
+    <table >
+
+      <form action = "/save_document/" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}       
+        <td>{{form}}</td>
+      
+        
+        <td>
+          <button  >
+        Сохранить
+      </button>
+       
+      </td>
+    </form>
+    <td> <button  onclick = "f('/')">
+        Главная страница
+      </button></td>
+      </tr>
+    </table> 

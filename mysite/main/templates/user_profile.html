@@ -1,0 +1,200 @@
+<script language="JavaScript"> 
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+<table >
+<form action = "/save/{{user}}/" method = "post" enctype="multipart/form-data">
+ {% csrf_token %}       
+        
+<tr>
+                
+                <td>
+                 Логин
+                </td>
+
+                <td>
+                 {{user.login}}
+                </td>
+                 <td>
+                  <img src="http://192.168.0.144/media/{{user.avatar}}" width="5%" height="5%"/>
+                  {%if  not view%}                  
+                    {{form_phone.avatar}}
+                  {%endif%}
+                </td>
+              </tr>
+              </table> 
+<table >
+
+     
+            	<tr>
+                 <td>
+                  Имя
+                </td>
+                {%if view%}
+                  <td>
+                    {{user.first_name}}
+                  </td>
+                {%else%}
+                  <td>
+                    {{form_phone.first_name}}
+                  </td>
+                {%endif%}
+              </tr>
+            <tr>
+                 <td>
+                  Фамилия
+                </td>
+                 {%if view%}
+                <td>
+                  {{user.second_name}}
+                </td>
+                {%else%}
+                <td>
+                  {{form_phone.second_name}}
+                </td>
+                 {%endif%}
+              </tr>
+              <tr>
+                 <td>
+                  Отчество
+                </td>
+                 {%if view%}
+                <td>
+                  {{user.patronymic}}
+                </td>
+                {%else%}
+                <td>
+                  {{form_phone.patronymic}}
+                </td>
+                 {%endif%}
+              </tr>
+
+              <tr>
+                 <td>
+                  Должность
+                </td>
+                {%if not admin_prava or view %}
+                <td>
+                  {{user.id_function}}
+                </td>
+                  {%else%}
+               
+                    <td>
+                      {{form_phone.id_function}}
+                    </td>
+                    {%endif%}
+                
+                
+                 
+              </tr>
+
+              <tr>
+                 <td>
+                  E-Mail
+                </td>
+                 {%if view%}
+                <td>
+                  {{user.email}}
+                </td>
+                {%else%}
+                <td>
+                  {{form_phone.email}}
+                </td>
+                 {%endif%}
+              </tr>
+
+              <tr>
+                 <td>
+                  Телефон моб.
+                </td>
+                 {%if view%}
+                <td>
+                  {{user.phone_mob}}
+                </td>
+                {%else%}
+                <td>
+                  {{form_phone.phone_mob_form}}
+                </td>
+                 {%endif%}
+              </tr>
+
+              <tr>
+                 <td>
+                  Телефон раб.
+                </td>
+                 {%if view%}
+                <td>
+                  {{user.phone_work}}
+                </td>
+                {%else%}
+                <td>
+                  {{form_phone.phone_work_form}}
+                </td>
+                 {%endif%}
+              </tr>
+
+              <tr>
+                {%if admin_prava and user.login != login%}
+                  <td>                
+                    Права Администратора:
+                  </td>
+                  {%if view%}
+                    <td>
+                      {{user.admin_prava}}
+                    </td>        
+                      
+                      
+                  {%else%}
+                    <td>
+                      {{form_phone.admin_prava_form}}
+                    </td>            
+                {%endif%}
+                {%endif%}
+              </tr>
+
+             
+            <tr>
+                
+                <td>
+                
+                </td>
+
+                <td>
+                
+                </td>
+                <td>
+                
+                </td>
+                <td>
+
+                <table  border="1">
+                  {%if not view%}
+                  <td>
+                     
+                   <input type = "image" value = "Применить"/></p></td>
+
+                </td>
+                 
+
+                <td  onclick = "f('http://192.168.0.144/profile/')">
+                Отмена
+                </td>
+                {%else%}
+               <td  onclick = "f('/update_profile/')">
+                  Настройка
+                </td>
+                <td  onclick = "f('/')">
+                  Главная страница
+                </td>
+                {%endif%}
+
+                </table> 
+                </td>
+              </tr>
+                    </form>
+           
+         
+          
+</table> 

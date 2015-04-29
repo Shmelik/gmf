@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+	<script>
+	UPLOADCARE_TABS = 'all';
+	UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+	</script>
+	{{ form.media }}
+{% endblock %}
+
+
+{% block body %}
+	<div>
+		<form action="." method="post" id="upload-form" class="center">
+			<p>Please, select an image:</p>
+			<p>{{ form.image }}</p>
+		</form>
+		{{ form.errors }}
+		<script>
+		(function() {
+			uploadcare.start();
+
+			var widget = uploadcare.Widget('#id_image');
+			var onChange = function(file) {
+				if (file) {
+					var form = document.getElementById('upload-form');
+					form.submit();
+					form.style.display = 'none';
+				}
+			}
+			if (widget.value()) {
+				// If widget already has value, catch only next value.
+				widget.value().done(function() {
+					widget.onChange(onChange);
+				});
+			} else {
+				widget.openDialog();
+				widget.onChange(onChange);
+			}
+		})();
+		</script>
+	</div>
+{% endblock %}

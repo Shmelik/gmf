@@ -1,0 +1,49 @@
+<script language="JavaScript"> 
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+<table >
+	
+		<tr >
+			<td onclick = " f('/profile/')">
+				<p>{{user}}</p>
+			</td>
+			<td>
+				<img src="http://192.168.0.144/media/{{user.avatar}}" width="5%" height="5%"/>
+			</td>
+		</tr>
+		<tr>
+		
+		{%if admin%}
+		<td onclick = " f('/all_user/')">
+				<p>Все пользователи</p>
+			</td>
+		{%endif%}
+		</tr>
+		<tr >
+			<td onclick = " f('/document/')">
+				<p>Документы</p>
+			</td>
+			
+		</tr>
+		<tr >
+			<td onclick = " f('/matching_new/')">
+				<p>Согласование</p>
+			</td>
+			
+		</tr>
+		<tr >
+			<td onclick = " f('/all_matching_user/')">
+				<p>Мои Согласования</p>
+			</td>
+			
+		</tr>
+		<tr >
+			<td onclick = " f('/logout/')">
+				<p>Выход</p>
+			</td>
+			
+		</tr>
+</table> 

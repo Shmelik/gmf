@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<h2>Uploaded Image</h2>
+
+	<a href="{{ image.image.cdn_url }}">
+		<img align="left" src="{{ image.image.cdn_url }}-/stretch/off/-/resize/260x/"></a>
+
+	<div class="float-info">
+		<p>
+			<b>Filename</b>: {{ image.image.info.filename }}<br>
+			<b>Uploaded</b>: {{ image.image.info.datetime_uploaded|slice:":10" }}<br>
+			<b>Original size</b>: {{ image.image.info.size|filesizeformat }}<br>
+		</p>
+
+		<p><a href="{{ image.image.cdn_url }}">Full link</a></p>
+	</div>
+	<br clear="left">
+	<p><a href="{% url 'index' %}">Upload another image</a></p>
+{% endblock %}

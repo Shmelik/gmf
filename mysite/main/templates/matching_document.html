@@ -1,0 +1,62 @@
+
+<style>
+   
+
+   td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+  </style>
+
+<script language="JavaScript"> 
+
+function f(n) 
+    { 
+    location=n
+    } 
+</script>
+ <button onclick = "f('/matching_new/{{id_matching}}/')">Назад</button>
+ 
+
+<table >
+    
+ 
+    
+       
+       
+   
+ 
+      
+      <tr>
+        <td style = "text-align: left;">
+          Документ
+        </td>
+       
+        <td>
+          Дата загрузки
+        </td>
+       
+         </tr>
+         <tr><td>_________________________________</td></tr>
+       {%if document%}
+
+        {%for i in document%}
+          <tr>
+            <td style = "text-align: left;">
+              <a href="http://192.168.0.144/matching_document_save/{{id_matching}}/{{i.id}}">{{i.titel}}</a>
+            </td>
+            
+
+            <td style = "text-align: left;">
+              {{i.date}}
+            </td>
+           
+            {%if  i.update%}
+              <td>{{i.update}}</td>
+            {%endif%}
+          </tr>
+        {%endfor%}
+        {%endif%}
+        
+  
+
+</table> 
